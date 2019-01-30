@@ -10,9 +10,9 @@ class vistapanelApi {
 	public $cpanel_url = "";
 	public $loggedin = false;
 	public $vistapanel_session = "";
-  public $vistapanel_sessionName = "PHPSESSID";
-  public $vistapanel_token = 0;
-  public $accountUsername = "";
+ 	public $vistapanel_sessionName = "PHPSESSID";
+ 	public $vistapanel_token = 0;
+  	public $accountUsername = "";
 	
   function getLineWithString($content, $str) {
       $lines = explode("\n", $content);
@@ -34,6 +34,8 @@ class vistapanelApi {
 			curl_setopt($ch, CURLOPT_HEADER, true);
 		}
 		curl_setopt($ch, CURLOPT_HTTPHEADER, $httpheader);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0); 
     curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.13) Gecko/20080311 Firefox/2.0.0.13');
     if( $followlocation == true ) {
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
